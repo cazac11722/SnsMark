@@ -210,15 +210,25 @@ const Home = () => {
             <section className="lg:col-span-1">
 
               <div className="bg-white rounded-2xl p-5 mb-5">
-                <h3 className="font-bold">
-                  실시간 주문 리스트
-                </h3>
+                <div className="flex items-center justify-between">
+                  <h3 className="font-bold">
+                    실시간 주문 리스트
+                  </h3>
+                  <h4 className="flex items-center justify-center text-gray-400 text-sm">
+                    최근 업데이트 시간:  
+                    <span className="text-black ml-2">2025년 03월 15일 0시 0분 05초</span>
+                    <IconWidget icon="Load" className="ml-2 cursor-pointer" />
+                  </h4>
+                </div>
                 <ul className="mt-5">
                   {
                     serviceList[0]?.workList.map((e) => (
-                      <li key={e.id} className="border rounded-lg px-4 py-4 mb-4 opacity-60 transition-all hover:opacity-100 hover:border-main-900 cursor-pointer">
-                        <p className="text-sm mb-2 ">{e.title}</p>
-                        <p className="text-sm text-gray-500">{serviceList[0].title}</p>
+                      <li key={e.id} className="border rounded-lg px-4 py-4 mb-4 transition-all cursor-pointer">
+                        <div className="flex items-center justify-between">
+                          <h3>zzz***</h3>
+                          <span className="text-sm text-gray-400">2025년 03월 15일 0시 0분 03초</span>
+                        </div>
+                        <p className="text-sm mt-2">{e.title}</p>
                       </li>
                     ))
                   }
@@ -231,9 +241,9 @@ const Home = () => {
                 <ul className="mt-5">
                   {
                     serviceList[0]?.workList.map((e) => (
-                      <li key={e.id} className="border rounded-lg px-4 py-4 mb-4 opacity-60 transition-all hover:opacity-100 hover:border-main-900 cursor-pointer">
-                        <p className="text-sm mb-2 ">{e.title}</p>
-                        <p className="text-sm text-gray-500">{serviceList[0].title}</p>
+                      <li key={e.id} className="flex items-center justify-between border rounded-lg px-4 py-4 mb-4 transition-all  cursor-pointer">
+                        <p className="text-sm ">{e.title}</p>
+                        <IconWidget icon="FaChevronRight" className="text-sm" />
                       </li>
                     ))
                   }

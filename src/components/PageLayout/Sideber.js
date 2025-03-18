@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SidebarItem from "../Sidebar/Sideber_item";
 import { useAuth } from "../../contexts/AuthContext";
 import SidebarItemSub from "../Sidebar/Sideber_item_sub";
 
 const Sidebar = ({ isOpen, toggleOpen }) => {
     const { user } = useAuth();
+    const loaction = useLocation();
 
     return (
         <aside id="sidebar" className={`fixed top-0 left-0 z-20  flex flex-col flex-shrink-0 hidden  h-full pt-[4.5em] font-normal duration-75 lg:flex transition-width duration-200 ${isOpen ? 'w-16' : 'w-64'}`}>
@@ -17,33 +18,36 @@ const Sidebar = ({ isOpen, toggleOpen }) => {
                                 <SidebarItem href="#" name="서비스 소개" icon="" iconClassName={"w-6 mr-2"} textClassName={`font-bold text-lg`} textShow={isOpen} />
                             </li>
                             <li>
-                                <SidebarItem href={`/`} name="주문하기" icon="Home" iconClassName={"w-6 mr-2"} textClassName={`text-base`} textShow={isOpen} />
+                                <SidebarItem href={`/`} name="주문하기" icon="GoHomeFill" iconClassName={"text-base mr-2"} textClassName={`text-sm`} textShow={isOpen} chk={loaction.pathname == '/' ? true : false} />
                             </li>
                             <li>
-                                <SidebarItem href={`/`} name="상품안내 및 주문방법" icon="ContentPaste" iconClassName={"w-6 mr-2"} textClassName={`text-base`} textShow={isOpen} />
+                                <SidebarItem href={`/guide`} name="상품안내 및 주문방법" icon="FaSearch" iconClassName={"text-base mr-2"} textClassName={`text-sm`} textShow={isOpen} chk={loaction.pathname == '/guide' ? true : false} />
                             </li>
                             <li>
-                                <SidebarItem href={`/`} name="자주 묻는 질문" icon="Help" iconClassName={"w-6 mr-2"} textClassName={`text-base`} textShow={isOpen} />
+                                <SidebarItem href={`/faq`} name="자주 묻는 질문" icon="IoMdHelpCircleOutline" iconClassName={"text-base mr-2"} textClassName={`text-sm`} textShow={isOpen} chk={loaction.pathname == '/faq' ? true : false} />
                             </li>
                             <li>
-                                <SidebarItem href={`/`} name="추천인 이벤트" icon="Hat" iconClassName={"w-6 mr-2"} textClassName={`text-base`} textShow={isOpen} />
+                                <SidebarItem href={`/addfunds`} name="충전하기" icon="GoZap" iconClassName={"text-base mr-2"} textClassName={`text-sm`} textShow={isOpen} chk={loaction.pathname == '/addfunds' ? true : false} />
                             </li>
                             <li>
-                                <SidebarItem href={`/`} name="충전하기" icon="ContentPaste" iconClassName={"w-6 mr-2"} textClassName={`text-base`} textShow={isOpen} />
+                                <SidebarItem href={`/contact`} name="문의하기" icon="BsChatDots" iconClassName={"text-base mr-2"} textClassName={`text-sm`} textShow={isOpen} chk={loaction.pathname == '/contact' ? true : false} />
+                            </li>
+                            <li>
+                                <SidebarItem href={`/affiliates`} name="추천인 이벤트" icon="GoThumbsup" iconClassName={"text-base mr-2"} textClassName={`text-sm`} textShow={isOpen} chk={loaction.pathname == '/affiliates' ? true : false} />
                             </li>
                         </ul>
                         <ul className="pt-2">
                             <li>
-                                <SidebarItem href="#" name="사용자 메뉴" icon="" iconClassName={"w-6 mr-2"} textClassName={`font-bold text-lg`} textShow={isOpen} />
+                                <SidebarItem href="#" name="사용자 메뉴" icon="" iconClassName={"text-base mr-2"} textClassName={`font-bold text-lg`} textShow={isOpen} />
                             </li>
                             <li>
-                                <SidebarItem href={`/`} name="설정" icon="Setting" iconClassName={"w-6 mr-2"} textClassName={`text-base`} textShow={isOpen} />
+                                <SidebarItem href={`/setting`} name="설정" icon="GoGear" iconClassName={"text-base mr-2"} textClassName={`text-sm`} textShow={isOpen} chk={loaction.pathname == '/setting' ? true : false} />
                             </li>
                             <li>
-                                <SidebarItem href={`/`} name="마이페이지" icon="Profile" iconClassName={"w-6 mr-2"} textClassName={`text-base`} textShow={isOpen} />
+                                <SidebarItem href={`/mypage`} name="마이페이지" icon="FaUser" iconClassName={"text-base mr-2"} textClassName={`text-sm`} textShow={isOpen} chk={loaction.pathname == '/mypage' ? true : false} />
                             </li>
                             <li>
-                                <SidebarItem href={`/`} name="로그아웃" icon="Login" iconClassName={"w-6 mr-2"} textClassName={`text-base`} textShow={isOpen} />
+                                <SidebarItem href={`/logout`} name="로그아웃" icon="GoSignOut" iconClassName={"text-base mr-2"} textClassName={`text-sm`} textShow={isOpen} chk={loaction.pathname == '/logout' ? true : false} />
                             </li>
                         </ul>
                     </div>

@@ -9,7 +9,7 @@ const Header = () => {
     const { logout, user } = useAuth();
 
     return (
-        <nav className="fixed z-30 w-full">
+        <nav className="fixed z-30 w-full bg-[#F5F5F5]">
             <div className="px-3 py-4 relative">
                 <div className="flex items-center justify-between">
                     <div className="flex">
@@ -18,17 +18,17 @@ const Header = () => {
                         </div>
                         <div className="flex items-center justify-start px-3">
                             <h3 className="font-bold text-xl">HOME</h3>
-                            <IconWidget icon="Vector" className={'mx-4'} />
+                            <IconWidget icon="FaChevronRight" className={'mx-2 text-sm'} />
                             <span className="text-gray-500">주문하기</span>
                         </div>
                     </div>
                     <div className="flex items-center">
                         <div className="flex items-center ml-3 ">
                             <div>
-                                <button type="button" className="flex items-center border border-gray-400 py-2 px-3 rounded-lg">
-                                    <IconWidget icon="Pubilc" className={''} />
-                                    <span className="text-sm text-gray-500 mx-3">한국어</span>
-                                    <IconWidget icon="Vector" className={' stroke-gray-500 rotate-90'} />
+                                <button type="button" className="flex items-center border border-gray-500 py-2 px-3 rounded-lg">
+                                    <IconWidget icon="LiaGlobeSolid" className={'text-lg fill-gray-800'} />
+                                    <span className="text-sm text-gray-800 mx-2">한국어</span>
+                                    <IconWidget icon="FaChevronRight" className={' text-sm fill-gray-800 rotate-90'} />
                                 </button>
                             </div>
                             <div className="ml-2">

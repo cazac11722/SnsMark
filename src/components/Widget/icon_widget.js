@@ -1,65 +1,62 @@
 import React from 'react';
-
-import { ReactComponent as Chat } from "../../assets/svg/Chat.svg";
-import { ReactComponent as ContentPaste } from "../../assets/svg/ContentPaste.svg";
-import { ReactComponent as Hat } from "../../assets/svg/Hat.svg";
-import { ReactComponent as Heart } from "../../assets/svg/Heart.svg"
-import { ReactComponent as Help } from "../../assets/svg/Help.svg"
-import { ReactComponent as Home } from "../../assets/svg/Home.svg"
-import { ReactComponent as Login } from "../../assets/svg/Login.svg"
-import { ReactComponent as Profile } from "../../assets/svg/Profile.svg"
-import { ReactComponent as Setting } from "../../assets/svg/Setting.svg"
-import { ReactComponent as Shop } from "../../assets/svg/Shop.svg"
-import { ReactComponent as Star } from "../../assets/svg/Star.svg"
-import { ReactComponent as Time } from "../../assets/svg/Time.svg"
-import { ReactComponent as Vector } from "../../assets/svg/Vector.svg"
-import { ReactComponent as Public } from "../../assets/svg/Public.svg"
+import { BsChatDots } from 'react-icons/bs';
+import { FaChevronRight, FaSearch, FaUser } from 'react-icons/fa';
+import { FaMoneyBillTrendUp } from 'react-icons/fa6';
+import { FiAlertCircle } from 'react-icons/fi';
+import { GoGear, GoHomeFill, GoSignOut, GoThumbsup, GoZap } from 'react-icons/go';
+import { IoMdHelpCircleOutline } from 'react-icons/io';
+import { LiaGlobeSolid } from 'react-icons/lia';
+import { RiMoneyDollarCircleFill } from 'react-icons/ri';
+import { TbPigMoney } from 'react-icons/tb';
 
 const IconWidget = (props) => {
     let html = '';
 
     switch (props.icon) {
-        case "Chat" :
-            html = <Chat className={props.className} />;
+        case "GoHomeFill":
+            html = <GoHomeFill className={props.className} />;
             break;
-        case "ContentPaste" :
-            html = <ContentPaste className={props.className} />;
+        case "FaSearch":
+            html = <FaSearch className={props.className} />;
             break;
-        case "Hat" :
-            html = <Hat className={props.className} />;
+        case "IoMdHelpCircleOutline":
+            html = <IoMdHelpCircleOutline className={props.className} />;
             break;
-        case "Heart" :
-            html = <Heart className={props.className} />;
+        case "FaChevronRight":
+            html = <FaChevronRight className={props.className} />;
             break;
-        case "Help" :
-            html = <Help className={props.className} />;
+        case "LiaGlobeSolid":
+            html = <LiaGlobeSolid className={props.className} />;
             break;
-        case "Home" :
-            html = <Home className={props.className} />;
+        case "GoGear":
+            html = <GoGear className={props.className} />;
             break;
-        case "Login" :
-            html = <Login className={props.className} />;
+        case "GoThumbsup":
+            html = <GoThumbsup className={props.className} />;
             break;
-        case "Profile" :
-            html = <Profile className={props.className} />;
+        case "GoZap":
+            html = <GoZap className={props.className} />;
             break;
-        case "Setting" :
-            html = <Setting className={props.className} />;
+        case "FaUser":
+            html = <FaUser className={props.className} />;
             break;
-        case "Shop" :
-            html = <Shop className={props.className} />;
+        case "GoSignOut":
+            html = <GoSignOut className={props.className} />;
             break;
-        case "Star" :
-            html = <Star className={props.className} />;
+        case "FiAlertCircle":
+            html = <FiAlertCircle className={props.className} />;
             break;
-        case "Time" :
-            html = <Time className={props.className} />;
+        case "RiMoneyDollarCircleFill":
+            html = <RiMoneyDollarCircleFill className={props.className} />;
             break;
-        case "Vector" :
-            html = <Vector className={props.className} />;
+        case "FaMoneyBillTrendUp":
+            html = <FaMoneyBillTrendUp className={props.className} />;
             break;
-        case "Pubilc" :
-            html = <Public className={props.className} />;
+        case "TbPigMoney":
+            html = <TbPigMoney className={props.className} />;
+            break;
+        case "BsChatDots":
+            html = <BsChatDots className={props.className} />;
             break;
     }
 
