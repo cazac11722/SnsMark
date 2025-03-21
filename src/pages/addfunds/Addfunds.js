@@ -18,9 +18,9 @@ const Addfunds = () => {
         <div id="main-content" className={`relative w-full h-full overflow-y-auto transition-width duration-200 ${sidebarOpen ? "lg:ml-14" : "lg:ml-64"}`}>
           <main className="min-h-screen ">
 
-            <section className="grid grid-cols-1 lg:grid-cols-2 gap-5 px-5">
+            <section className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-5 px-2 lg:px-5 w-full">
 
-              <div className="flex flex-col bg-white rounded-2xl p-5 col-span-1">
+              <div className="flex flex-col bg-white rounded-2xl p-5 col-span-2 lg:col-span-1">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold">
                     잔액충전
@@ -89,7 +89,7 @@ const Addfunds = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col bg-white rounded-2xl p-5 col-span-1">
+              <div className="flex flex-col bg-white rounded-2xl p-5 col-span-2 lg:col-span-1">
                 <div className="flex items-center justify-between">
                   <h3 className="font-bold">충전 방법 안내</h3>
                 </div>
@@ -123,16 +123,16 @@ const Addfunds = () => {
                         <th className="px-3 py-3 w-16 text-center" scope="col">
                           번호
                         </th>
-                        <th className="px-6 py-3 text-center" scope="col">
+                        <th className="px-6 py-3 text-center w-[10em]" scope="col">
                           충전일시
                         </th>
-                        <th className="px-6 py-3 text-center" scope="col">
+                        <th className="px-6 py-3 text-center whitespace-nowrap" scope="col">
                           충전금액
                         </th>
-                        <th className="px-6 py-3 text-center" scope="col">
+                        <th className="px-6 py-3 text-center whitespace-nowrap" scope="col">
                           결제 방식
                         </th>
-                        <th className="px-6 py-3 text-center" scope="col">
+                        <th className="px-6 py-3 text-center whitespace-nowrap" scope="col">
                           환불 요청
                         </th>
                       </tr>
@@ -144,9 +144,9 @@ const Addfunds = () => {
                           scope="row">
                           01
                         </th>
-                        <td className="px-6 py-4">2025년 03월 01일 0시 0분 0초</td>
-                        <td className="px-6 py-4">20,000 원</td>
-                        <td className="px-6 py-4">무통장 결제</td>
+                        <td className="px-6 py-4 whitespace-nowrap">2025년 03월 01일 0시 0분 0초</td>
+                        <td className="px-6 py-4 whitespace-nowrap">20,000 원</td>
+                        <td className="px-6 py-4 whitespace-nowrap">무통장 결제</td>
                         <td className="px-6 py-4">
                           <a className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                             href="#">

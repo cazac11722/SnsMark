@@ -7,7 +7,9 @@ import { GoGear, GoHomeFill, GoSignOut, GoThumbsup, GoZap } from 'react-icons/go
 import { IoMdHelpCircleOutline } from 'react-icons/io';
 import { LiaGlobeSolid } from 'react-icons/lia';
 import { RiMoneyDollarCircleFill } from 'react-icons/ri';
+import { SiNaver } from 'react-icons/si';
 import { TbPigMoney } from 'react-icons/tb';
+import { TfiReload } from 'react-icons/tfi';
 
 const IconWidget = (props) => {
     let html = '';
@@ -58,6 +60,13 @@ const IconWidget = (props) => {
         case "BsChatDots":
             html = <BsChatDots className={props.className} />;
             break;
+        case "SiNaver":
+            html = <SiNaver className={props.className} />;
+            break;
+        case "TfiReload":
+            html = <TfiReload className={props.className} />;
+            break;
+
     }
 
     return html;

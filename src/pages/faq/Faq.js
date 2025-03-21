@@ -200,23 +200,24 @@ const Faq = () => {
       <main className="flex pt-[4.5em] overflow-hidden min-h-screen">
         <Sidebar isOpen={sidebarOpen} toggleOpen={toggleSidebarOpen} />
         <div id="main-content" className={`relative w-full h-full overflow-y-auto transition-width duration-200 ${sidebarOpen ? "lg:ml-14" : "lg:ml-64"}`}>
-          <main className="min-h-screen grid grid-cols-1 gap-5 px-5">
+          <main className="min-h-screen grid grid-cols-1 gap-2 lg:gap-5 px-2 lg:px-5">
             <section className="lg:col-span-1">
 
-              <div className="flex flex-col bg-white rounded-2xl p-5 mb-5 h-full">
+              <div className="flex flex-col bg-white rounded-2xl p-3 lg:p-5 mb-5 h-full">
 
-                <div className="flex items-center justify-between">
+                <div className="flex lg:items-center justify-between flex-col lg:flex-row">
                   <h3 className="font-bold">
                     자주 묻는 질문
                   </h3>
-                  <div className="relative w-60">
+                  <div className="relative w-60 mt-2 lg:mt-0">
                     <IconWidget icon="FaSearch" className=" text-sm absolute fill-gray-500 top-1/2 left-3 -translate-y-1/2" />
                     <input type="text" placeholder="질문을 입력해주세요." className="bg-gray-100 w-full pl-8 py-2 rounded-lg border text-sm" />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-4 gap-0 border mt-5 ">
-                  <div className="col-span-1 border-r bg-[#f4f7ff] ">
+                <div className="flex flex-col-reverse lg:grid grid-cols-3  lg:grid-cols-4 gap-0 border mt-5 ">
+
+                  <div className="col-span-3 lg:col-span-1 border-r bg-[#f4f7ff] ">
                     <ul className="p-4 h-[50em] overflow-y-auto">
                       <li>
                         <div onClick={() => toggleOpen('all')} className="flex items-center justify-between p-4 rounded-lg cursor-pointer hover:bg-[#e1e6f3]" >

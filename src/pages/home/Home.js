@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 
 import Header from '../../components/PageLayout/Header';
 import Sidebar from '../../components/PageLayout/Sideber';
@@ -17,7 +17,8 @@ import IconWidget from "../../components/Widget/icon_widget";
 
 const Home = () => {
   const { sidebarOpen, toggleSidebarOpen } = useSidebar();
-
+  const [isOpen1, setIsOpen1] = useState(0);
+  const [isOpen2, setIsOpen2] = useState(0);
   const [serviceList, setServiceList] = useState([
     {
       id: 1, title: '이벤트', img: Icon1,
@@ -111,31 +112,39 @@ const Home = () => {
     },
   ]);
 
+  const toggleOpen1 = (id) => {
+    setIsOpen1(id);
+  }
+
+  const toggleOpen2 = (id) => {
+    setIsOpen2(id);
+  }
+
   return (
     <div className="bg-[#F5F5F5]">
       <Header />
-      <main className="flex pt-[4.5em] overflow-hidden min-h-screen">
+      <main className="flex overflow-hidden min-h-screen pt-[4.5em]">
         <Sidebar isOpen={sidebarOpen} toggleOpen={toggleSidebarOpen} />
         <div id="main-content" className={`relative w-full h-full overflow-y-auto transition-width duration-200 ${sidebarOpen ? "lg:ml-14" : "lg:ml-64"}`}>
-          <main className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-5 px-5">
+          <main className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-2 px-2 lg:px-5 lg:gap-5">
             <section className="lg:col-span-1 ">
-              <div className="bg-white rounded-2xl p-5 mb-5">
+              <div className="bg-white rounded-2xl p-3 mb-5 lg:p-5">
                 <h3 className="font-bold">
                   <span className="bg-main-900 text-white px-3 py-1 rounded-lg mr-2">1</span>
                   원하는 서비스를 선택해주세요.
                 </h3>
-                <ul className=" grid grid-cols-6 gap-3 mt-5">
+                <ul className=" grid grid-cols-4 gap-3 mt-5 lg:grid-cols-6">
                   {
                     serviceList?.map((e) => (
-                      <li key={e.id} className="flex flex-col items-center justify-center py-4 border col-span-1 rounded-lg transition-all opacity-60 hover:opacity-100 hover:border-main-900 cursor-pointer">
-                        <img src={e.img} className="w-8" />
-                        <span className="text-sm mt-2">{e.title}</span>
+                      <li key={e.id} onClick={() => toggleOpen1(e.id)} className={`flex flex-col items-center justify-center py-4 border col-span-1 rounded-lg transition-all cursor-pointer ${isOpen1 == e.id ? "border-main-900" : "border-gray-300"}`}>
+                        <img src={e.img} className="w-5 lg:w-8" />
+                        <span className="text-xs lg:text-sm mt-2">{e.title}</span>
                       </li>
                     ))
                   }
                 </ul>
               </div>
-              <div className="bg-white rounded-2xl p-5 mb-5">
+              <div className="bg-white rounded-2xl p-3 mb-5 lg:p-5">
                 <h3 className="font-bold">
                   <span className="bg-main-900 text-white px-3 py-1 rounded-lg mr-2">2</span>
                   원하는 작업을 선택해주세요.
@@ -143,49 +152,50 @@ const Home = () => {
                 <ul className="mt-5">
                   {
                     serviceList[0]?.workList.map((e) => (
-                      <li key={e.id} className="border rounded-lg px-4 py-4 mb-4 opacity-60 transition-all hover:opacity-100 hover:border-main-900 cursor-pointer">
-                        <p className="text-sm mb-2 ">{e.title}</p>
-                        <p className="text-sm text-gray-500">{serviceList[0].title}</p>
+                      <li key={e.id} onClick={() => toggleOpen2(e.id)} className={`border rounded-lg px-4 py-4 mb-4 transition-all cursor-pointer ${isOpen2 == e.id ? "opacity-100 border-main-900" : "opacity-60 hover:opacity-100 hover:border-main-900"}`}>
+                        <p className="text-sm mb-2 whitespace-nowrap text-ellipsis overflow-hidden">{e.title}</p>
+                        {/* <p className="text-sm text-gray-500">{serviceList[0].title}</p> */}
                       </li>
                     ))
                   }
                 </ul>
               </div>
-              <div className="bg-white rounded-2xl p-5 mb-5">
+              <div className="bg-white rounded-2xl p-3 mb-5 lg:p-5">
                 <h3 className="font-bold">
                   <span className="bg-main-900 text-white px-3 py-1 rounded-lg mr-2">3</span>
                   원하는 옵션을 선택해 주세요.
                 </h3>
-                <select className="w-full border mt-5 px-4 py-3 rounded-lg text-sm">
-                  {
-                    serviceList[0]?.optionList.map((e) => (
-                      <option key={e.id} value={e.id}>{e.title}</option>
-                    ))
-                  }
-                </select>
+                <div className=" relative mt-5">
+                  <select className="w-full border  px-4 py-3 rounded-lg text-sm appearance-none peer">
+                    {
+                      serviceList[0]?.optionList.map((e) => (
+                        <option key={e.id} value={e.id}>{e.title}</option>
+                      ))
+                    }
+                  </select>
+                  <IconWidget icon="FaChevronRight" className=" absolute w-5 rotate-90 right-4 top-1/2 -translate-y-1/2" />
+                </div>
               </div>
-              <div className="bg-white rounded-2xl p-5 mb-5">
-                <h3 className="font-bold">
+              <div className="bg-white rounded-2xl p-3 mb-5 lg:p-5">
+                <h3 className="font-bold ">
                   <span className="bg-main-900 text-white px-3 py-1 rounded-lg mr-2">4</span>
                   해당 작업(옵션)에 대한 상세 설명입니다.
-                  <span className="bg-red-500 text-[0.7rem] text-white px-2 py-1 rounded-lg ml-2">필독</span>
+                  <span className="bg-red-500  text-[0.7rem] text-white px-2 py-1 rounded-lg lg:ml-2">필독</span>
                 </h3>
                 <div className="bg-gray-200 p-4 mt-5 rounded-lg">
-                  <p className="text-sm">{
-                    `📣 서비스 특징
-                  광고주의 게시물을 ㈜스마일드래곤의 제휴사 및 자사 플랫폼 등을 적절히 활용하여 실제 유저들에게 홍보해 계정의 '진짜 성장'을 도와드립니다.
-                  노출 효과를 극대화해 퍼포먼스 마케팅은 물론 브랜드 마케팅까지 고루할 수 있는 유일한 마케팅 서비스입니다.
-                  인스타그램을 처음 접하는 인스타 초보분들을 위해 만들어진 서비스로 게시물 올리는 법, 프로필 수정방법, 해시태그에 대한 설명 등 아주 기초적인 컨설팅이 들어가 있는 패키지 상품 입니다. 인스타그램을 막 시작하는 분들에게 추천 드립니다.
-                  📋 서비스 설명
-                  30일간 매일 첫 번째로 올려주시는 게시물을 실제 한국인 유저들에게 홍보하여 자연스럽게 팔로워, 좋아요, 조회수, 도달 등이 증가되는 올인원 형태의 상품으로, 인기게시물 및 추천 탭에 노출이 잘 되는 최적화 계정을 만들어드리는 서비스입니다.
-                  * 하루 한 개의 게시물을, 한 달 기준 최대 30개까지 홍보해 드립니다.
-                  * 해당 날짜에 첫 번째로 업로드한 게시물에만 홍보가 진행됩니다. * 매일 하루 1장씩 꾸준히 게시물을 올려주시면 광고 효과가 더 좋습니다. ※상품가격※ 99,000원(30일) 
-                  📩문의 방법📩
-                  1. 주문 링크에 카카오톡이 연결된 휴대폰 번호 기입.
-                  2. 주문 수량란에 숫자 1 입력 후 주문하기 버튼 클릭.
-                  3. 담당자가 영업일 기준 3일내 카카오톡으로 연락드립니다.
-                  SNS샵의 전문가들이 당신의 성장을 도와드리겠습니다.`
-                  }</p>
+                  <div className="text-xm h-[50em] overflow-y-auto">
+                    <h3 className="text-2xl font-bold">📣 서비스 특징</h3>
+                    <p className="mt-2">광고주의 게시물을 ㈜스마일드래곤의 제휴사 및 자사 플랫폼 등을 적절히 활용하여 실제 유저들에게 홍보해 계정의 '진짜 성장'을 도와드립니다. 노출 효과를 극대화해 퍼포먼스 마케팅은 물론 브랜드 마케팅까지 고루할 수 있는 유일한 마케팅 서비스입니다.</p>
+                    <img src="https://assets.snsshop.kr/assets/img2/signin-banner-01.jpg" alt="" className="w-1/2 my-4" />
+
+                    <h3 className="text-center">📣 서비스 특징</h3>
+                    <p className="mt-2 text-center">광고주의 게시물을 ㈜스마일드래곤의 제휴사 및 자사 플랫폼 등을 적절히 활용하여 실제 유저들에게 홍보해 계정의 '진짜 성장'을 도와드립니다.
+                    노출 효과를 극대화해 퍼포먼스 마케팅은 물론 브랜드 마케팅까지 고루할 수 있는 유일한 마케팅 서비스입니다.</p>
+                    <img src="https://assets.snsshop.kr/assets/img2/signin-banner-02.png" alt="" className="w-1/2 my-4 mx-auto"></img>
+
+                    <p className="mt-2">광고주의 게시물을 ㈜스마일드래곤의 제휴사 및 자사 플랫폼 등을 적절히 활용하여 실제 유저들에게 홍보해 계정의 '진짜 성장'을 도와드립니다.
+                    노출 효과를 극대화해 퍼포먼스 마케팅은 물론 브랜드 마케팅까지 고루할 수 있는 유일한 마케팅 서비스입니다.</p>
+                  </div>
                 </div>
                 <h3 className="font-bold mt-5">
                   <span className="bg-main-900 text-white px-3 py-1 rounded-lg mr-2">5</span>
@@ -197,10 +207,11 @@ const Home = () => {
                   구매하실 수량을 입력해주세요.
                 </h3>
                 <input type="number" className="mt-5 bg-gray-100 w-full px-4 py-3 rounded-lg border text-sm" placeholder="예) 100" />
+                <p className="text-left text-sm text-gray-500 mr-1 mt-1">1 ~ 100</p>
                 <h3 className="font-bold mt-5">
-                  결제 예상 금액 (구매수량 입력시 자동으로 계산됩니다.)
+                  결제 예상 금액
                 </h3>
-                <input type="text" className="mt-5 bg-gray-100 w-full px-4 py-3 rounded-lg border text-sm font-bold" value={"10,000원"} readOnly />
+                <input type="text" className="mt-5 bg-gray-100 w-full px-4 py-3 rounded-lg border text-sm font-bold" value={"0원"} readOnly min={1} max={100} />
                 <button type="button" className="flex items-center justify-center bg-main-900 px-4 py-3 w-full rounded-lg mt-5">
                   <IconWidget icon="Shop" className=" fill-white mr-2" />
                   <span className="text-sm text-white font-bold">주문하기</span>
@@ -209,40 +220,40 @@ const Home = () => {
             </section>
             <section className="lg:col-span-1">
 
-              <div className="bg-white rounded-2xl p-5 mb-5">
-                <div className="flex items-center justify-between">
+              <div className="bg-white rounded-2xl p-3 mb-5 lg:p-5">
+                <div className="flex justify-between items-start flex-wrap lg:items-center">
                   <h3 className="font-bold">
                     실시간 주문 리스트
                   </h3>
                   <h4 className="flex items-center justify-center text-gray-400 text-sm">
-                    최근 업데이트 시간:  
+                    최근 업데이트 시간:
                     <span className="text-black ml-2">2025년 03월 15일 0시 0분 05초</span>
-                    <IconWidget icon="Load" className="ml-2 cursor-pointer" />
+                    <IconWidget icon="TfiReload" className="ml-2 cursor-pointer hover:text-black animate-spin" />
                   </h4>
                 </div>
                 <ul className="mt-5">
                   {
                     serviceList[0]?.workList.map((e) => (
-                      <li key={e.id} className="border rounded-lg px-4 py-4 mb-4 transition-all cursor-pointer">
+                      <li key={e.id} className="border rounded-lg px-4 py-4 mb-4 transition-all cursor-pointer hover:border-main-900">
                         <div className="flex items-center justify-between">
                           <h3>zzz***</h3>
                           <span className="text-sm text-gray-400">2025년 03월 15일 0시 0분 03초</span>
                         </div>
-                        <p className="text-sm mt-2">{e.title}</p>
+                        <p className="text-sm mt-2 whitespace-nowrap text-ellipsis overflow-hidden">{e.title}</p>
                       </li>
                     ))
                   }
                 </ul>
               </div>
-              <div className="bg-white rounded-2xl p-5 mb-5">
+              <div className="bg-white rounded-2xl p-3 mb-5 lg:p-5">
                 <h3 className="font-bold">
                   주문방법 - 링크 입력 가이드
                 </h3>
                 <ul className="mt-5">
                   {
                     serviceList[0]?.workList.map((e) => (
-                      <li key={e.id} className="flex items-center justify-between border rounded-lg px-4 py-4 mb-4 transition-all  cursor-pointer">
-                        <p className="text-sm ">{e.title}</p>
+                      <li key={e.id} className="flex items-center justify-between border rounded-lg px-4 py-4 mb-4 transition-all  cursor-pointer hover:border-main-900">
+                        <p className="text-sm whitespace-nowrap text-ellipsis overflow-hidden">{e.title}</p>
                         <IconWidget icon="FaChevronRight" className="text-sm" />
                       </li>
                     ))

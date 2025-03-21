@@ -25,9 +25,9 @@ const Guide = () => {
       <main className="flex pt-[4.5em] overflow-hidden min-h-screen">
         <Sidebar isOpen={sidebarOpen} toggleOpen={toggleSidebarOpen} />
         <div id="main-content" className={`relative w-full h-full overflow-y-auto transition-width duration-200 ${sidebarOpen ? "lg:ml-14" : "lg:ml-64"}`}>
-          <main className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-5 px-5">
+          <main className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-5 px-2 lg:px-5">
             <section className="lg:col-span-1 ">
-              <div className="bg-white rounded-2xl p-5 mb-5">
+              <div className="bg-white rounded-2xl p-3 lg:p-5 mb-5">
                 <h3 className="font-bold">
                   상품/가격 안내 및 상품활용 TIP
                 </h3>
@@ -78,7 +78,7 @@ const Guide = () => {
               </div>
             </section>
             <section className="lg:col-span-1">
-              <div className="bg-white rounded-2xl p-5 mb-5">
+              <div className="bg-white rounded-2xl p-3 lg:p-5 mb-5">
                 <h3 className="font-bold">
                   주문방법 - 링크 입력 가이드
                 </h3>

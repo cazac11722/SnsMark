@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { PopupProvider } from "./contexts/hooks/usePopup";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./contexts/ProtectedRoute";
@@ -12,12 +12,14 @@ import Addfunds from "./pages/addfunds/Addfunds";
 import Setting from "./pages/auth/Setting";
 import Mypage from "./pages/auth/Mypage";
 import Contact from "./pages/faq/Contact";
+import { useEffect } from "react";
 
 function App() {
   return (
     <AuthProvider>
       <PopupProvider>
         <Router basename="/SnsMark">
+          <ScrollToTop />
           <Routes>
 
             <Route path={"/"} element={<Home />} />
@@ -35,8 +37,20 @@ function App() {
           </Routes>
         </Router>
       </PopupProvider>
-    </AuthProvider>
+    </AuthProvider >
   );
 }
 
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 export default App;
+
